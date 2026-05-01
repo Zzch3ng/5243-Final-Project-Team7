@@ -1,0 +1,40 @@
+NYC Taxi Demand Modeling Summary
+
+Goal:
+Predict hourly taxi demand by pickup zone and evaluate how time, location, weather, and congestion-pricing policy features help explain demand.
+
+Input feature matrix:
+/Users/jason/Documents/5243 final project/data/processed/feature_matrix_demand.parquet
+
+Dataset:
+Rows: 702,408
+Columns: 35
+Target: n_trips
+Time column: hour_ts
+Training window: 2024-11-08 00:00:00 to 2025-02-06 08:00:00
+Testing window: 2025-02-06 09:00:00 to 2025-02-28 23:00:00
+
+Models compared:
+       model      MAE      RMSE       R2      SMAPE
+RandomForest 2.524062  8.501991 0.969697 143.124069
+    LightGBM 2.535572  8.234135 0.971577 143.891292
+       Ridge 3.100844  9.774443 0.959948  76.435902
+     Poisson 4.753950 17.818695 0.866896 148.634866
+
+Selected final model:
+RandomForest
+
+Reason for selection:
+The final model was selected using the time-based test set, prioritizing MAE and RMSE. This is more realistic than a random split because the project is about predicting future taxi demand during a policy change period.
+
+Most important predictors:
+num__n_trips_lag_1h, num__n_trips_lag_168h, num__n_trips_lag_24h, num__n_trips_ma_24h, num__hour_cos, num__humidity, num__temp_c, num__wind_speed
+
+Interpretation for congestion-pricing story:
+Important time features show predictable commuting and nightlife demand patterns. Spatial features such as borough, pickup zone, CBD/treatment indicators, and zone clusters capture where demand is concentrated. Policy features such as post_policy, treated_zone, and did help compare post-policy demand changes for CBD-related zones versus other areas. Weather and holiday variables control for short-term demand shocks.
+
+Limitations:
+- The model is predictive, not a complete causal estimate of congestion pricing.
+- Results depend on the quality of zone-hour aggregation and lag features.
+- Lag features are strong predictors but may dominate policy variables.
+- Citi Bike features are optional and only included if they exist in the feature matrix.
