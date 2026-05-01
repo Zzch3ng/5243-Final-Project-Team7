@@ -1,0 +1,5 @@
+Final model: RandomForest
+MAE: 2.5241
+RMSE: 8.5020
+R2: 0.9697
+SMAPE: 143.12%
