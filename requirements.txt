@@ -1,0 +1,13 @@
+pandas
+numpy
+pyarrow
+scikit-learn
+matplotlib
+seaborn
+scipy
+joblib
+lightgbm
+shap
+umap-learn
+jupyter
+nbformat
