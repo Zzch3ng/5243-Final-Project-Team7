@@ -1,0 +1,42 @@
+NYC Congestion Pricing — DID Causal Analysis Summary
+
+Policy launch date: 2025-01-05
+Treatment group: 68 zones inside the Manhattan CBD
+Control group: zones outside the CBD
+Sample window: 2024-11-08 to 2025-02-28
+Outcome: log(1 + n_trips) per zone-hour
+
+Specification: log_trips ~ did + controls + zone FE + day FE
+  controls: temp_c, precip_mm, is_rainy, is_weekend, is_holiday, hour-of-day FE
+  Standard errors: clustered at zone level
+
+MAIN RESULT (full specification):
+  beta_DID: -0.2167
+  Approximate effect: -19.48% in CBD demand post-launch (vs. non-CBD)
+  95% CI: [-21.26%, -17.66%]
+  p-value: 0.0000
+
+ROBUSTNESS:
+  - Pre-trend test: see event_study_coefficients.csv
+  - Event-study plot: figures/event_study.png
+  - Placebo policy date 4 weeks earlier: placebo_test.csv
+  - Cluster heterogeneity: did_by_cluster.csv (if available)
+
+INTERPRETATION:
+  The DID coefficient measures the average change in CBD taxi demand after
+  congestion pricing launched, relative to non-CBD zones over the same period.
+  This nets out city-wide trends (weather, seasonality, broader demand shifts)
+  that affect both treated and control zones.
+
+  Identification rests on parallel trends — in the absence of the policy,
+  CBD and non-CBD demand would have moved together. The pre-period leads
+  in the event study and the placebo test address this assumption.
+
+LIMITATIONS:
+  - The CBD zone list is a static definition; actual fee enforcement may
+    differ at zone borders.
+  - DID estimates the average effect; cluster-level results show this is
+    not uniform across zone types.
+  - Yellow taxi data does not include for-hire vehicles, which may have
+    been substituted in or out post-policy.
+  - The post-period is only a few months; longer-run effects may differ.
