@@ -1,5 +1,0 @@
-Final model: LightGBM
-MAE: 2.3368
-RMSE: 8.1943
-R2: 0.9719
-SMAPE: 100.28%
