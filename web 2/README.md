@@ -1,12 +1,4 @@
----
-title: NYC Taxi Demand Predictor
-emoji: 🚕
-colorFrom: yellow
-colorTo: blue
-sdk: docker
-pinned: false
-license: mit
----
+
 
 # NYC Taxi Demand Predictor Web App
 
