@@ -36,7 +36,9 @@ Run this notebook from top to bottom to reproduce the full project.
 ├── src/
 │   └── 01_data_pipeline.py
 └── web/
+    ├── Dockerfile
     ├── app.py
+    ├── gitattributes
     ├── README.md
     └── requirements.txt
 ```
