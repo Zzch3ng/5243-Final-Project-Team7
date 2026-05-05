@@ -118,7 +118,7 @@ Generated processed data, models, and output plots are ignored by git because so
 
 ## Direct Results Download
 
-If you want to directly view the generated results without rerunning the full pipeline, download the processed outputs and model artifacts from Google Drive:
+Data outputs are too large which can not upload to Github. If you want to directly view the generated results without rerunning the full pipeline, download the processed outputs and model artifacts from Google Drive:
 
 https://drive.google.com/drive/folders/1gx2zPE-AV8BgAMtIa6xlnyTtvpk4T6eU?usp=drive_link
 
