@@ -72,7 +72,7 @@ A full reproducible workflow is:
 git clone <repo-url>
 cd <repo-folder>
 python -m pip install -r requirements.txt
-jupyter notebook "5243_final_project_merged.ipynb"
+jupyter notebook "5243_final_project.ipynb"
 python -m streamlit run "web 2/app.py"
 ```
 
